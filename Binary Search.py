@@ -46,6 +46,15 @@ def main():
         if low_value < high_value:
             print("Array has not been rotated, position 0 is answer.")
             found = True
+        
+        elif low_value == high_value and len(worklist) == 2:
+            print("Array has not been rotated, position 0 is answer.")
+        
+        elif low_value == high_value and worklist[span] < worklist[span - 1]:
+            print(f"The answer is at position {span - 1}")
+
+        elif span == 1:
+            print("Array contains one number, cannot be rotated.")
 
         elif middle > 0 and middle_value < worklist[middle - 1]:
             print(f"The answer is {middle_value} at position {middle}")
