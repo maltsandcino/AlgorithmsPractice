@@ -43,7 +43,7 @@ def main():
         low_value = worklist[0]
         high_value = worklist[span]
 
-        if low_value <= high_value:
+        if low_value < high_value:
             print("Array has not been rotated, position 0 is answer.")
             found = True
 
@@ -51,7 +51,7 @@ def main():
             print(f"The answer is {middle_value} at position {middle}")
             found = True
 
-        elif middle_value > worklist[middle + 1]:
+        elif middle_value > worklist[high_number]:
             low_number = middle + 1
 
         else:
