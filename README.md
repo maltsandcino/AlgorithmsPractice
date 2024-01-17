@@ -1,4 +1,4 @@
-#### Algorithms Practice
+# Algorithms Practice
 
 I will be using this repository to create problems solved by variations of common algorithms.
 
