@@ -52,15 +52,59 @@ class LinkedList:
         
         return count
     
+    def remove_at_index(self, index):
+        ###Basic edge case calls covered
+        if index < 0 or index > self.get_length() - 1:
+            raise Exception("Invalid index for this list")
+        
+        if index == 0:
+            self.head = self.head.next
+            return
+        
+        ##Begin iterating. Stop at node before desired index, and change pointer to next node's pointer.
+        count = 0
+        current_node = self.head
+        
+        while current_node:
+            if count == index - 1:
+                current_node.next = current_node.next.next
+                break
+            current_node = current_node.next
+            count += 1
 
+    def insert_at_index(self, index, data):
+        ##Handle errors and case of entry at 0th index, i.e. beginning of list
+        if index < 0 or index > self.get_length():
+            raise Exception("Invalid index for this list")
+        
+        if index == 0:
+            self.insert_at_beginning(data)
 
+        ##Iterate through list until desired index point
+            
+        count = 0
+        current_node = self.head
+        ##When at node before desired index, we point to a new node we create
+        while current_node:
+            if count == index - 1:
+                current_node.next = Node(data, current_node.next)
+                break
+            current_node = current_node.next
+            count += 1            
+        
+    
 
 if __name__ == '__main__':
     ll = LinkedList()
-    print(ll.get_length())
+
     # ll.insert_at_beginning("First Data Point")
     # ll.insert_at_end("Second Data Point")
     # ll.insert_at_beginning("Zeroth Data Point")
-    ll.list_print()
+    
     ll.insert_values(["New", "Also New", "Also New Again"])
     print(ll.get_length())
+    ll.list_print()
+    
+    ll.list_print()
+    ll.insert_at_index(3, "Test")
+    ll.list_print()
