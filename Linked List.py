@@ -24,8 +24,25 @@ class LinkedList:
         
         print(llstring)
 
+    def insert_at_end(self, data):
+        if self.head is None:
+            ###Next here is none, because we are creating the head node in this instance
+            self.head = Node(data, None)
+            return
+        
+        ###Iterate through nodes to the last node in list below
+        iterator = self.head
+        while iterator.next:
+            iterator = iterator.next
+        ##Here we have reached the last node, and are going to insert our new ending node
+        iterator.next = Node(data, None)
+
+
 if __name__ == '__main__':
     ll = LinkedList()
     ll.list_print()
     ll.insert_at_beginning("First Data Point")
+    ll.list_print()
+    ll.insert_at_end("Second Data Point")
+    ll.insert_at_beginning("Zeroth Data Point")
     ll.list_print()
