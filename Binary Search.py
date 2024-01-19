@@ -5,8 +5,8 @@ def main():
 
     worklist = []
 
-    for i in range(random.randint(0,13)):
-        worklist.append(random.randint(0,13))
+    for i in range(random.randint(0,9999)):
+        worklist.append(random.randint(0,9999))
     
     if not worklist:
         quit()
