@@ -16,11 +16,11 @@ class LinkedList:
             print("Linked list exists, but it is empty")
             return
 
-        iterator = self.head
+        current_node = self.head
         llstring = ""
-        while iterator:
-            llstring += str(iterator.data) + " => "
-            iterator = iterator.next
+        while current_node:
+            llstring += str(current_node.data) + " => "
+            current_node = current_node.next
         
         print(llstring)
 
@@ -31,18 +31,36 @@ class LinkedList:
             return
         
         ###Iterate through nodes to the last node in list below
-        iterator = self.head
-        while iterator.next:
-            iterator = iterator.next
+        current_node = self.head
+        while current_node.next:
+            current_node = current_node.next
         ##Here we have reached the last node, and are going to insert our new ending node
-        iterator.next = Node(data, None)
+        current_node.next = Node(data, None)
+    
+    ##Adding multiple values via iteration and calling insert at end function.
+    def insert_values(self, data_list):
+        
+        for element in data_list:
+            self.insert_at_end(element)
+    
+    def get_length(self):
+        count = 0
+        current_node = self.head
+        while current_node:
+            count += 1
+            current_node = current_node.next
+        
+        return count
+    
+
 
 
 if __name__ == '__main__':
     ll = LinkedList()
+    print(ll.get_length())
+    # ll.insert_at_beginning("First Data Point")
+    # ll.insert_at_end("Second Data Point")
+    # ll.insert_at_beginning("Zeroth Data Point")
     ll.list_print()
-    ll.insert_at_beginning("First Data Point")
-    ll.list_print()
-    ll.insert_at_end("Second Data Point")
-    ll.insert_at_beginning("Zeroth Data Point")
-    ll.list_print()
+    ll.insert_values(["New", "Also New", "Also New Again"])
+    print(ll.get_length())
