@@ -71,6 +71,28 @@ class LinkedList:
                 break
             current_node = current_node.next
             count += 1
+    
+    def insert_after_value(self, data_after, data_to_insert):
+
+        current_node = self.head
+        while current_node:
+            if current_node.data == data_after:
+                temp = current_node.next
+                current_node.next = Node(data_to_insert, temp)
+            
+            current_node = current_node.next
+    
+    def remove_by_value(self, data):
+
+        current_node = self.head
+        
+        count = 0
+        while current_node:
+            if current_node.data == data:
+                self.remove_at_index(count)
+                break
+            count += 1
+            current_node = current_node.next
 
     def insert_at_index(self, index, data):
         ##Handle errors and case of entry at 0th index, i.e. beginning of list
@@ -101,10 +123,9 @@ if __name__ == '__main__':
     # ll.insert_at_end("Second Data Point")
     # ll.insert_at_beginning("Zeroth Data Point")
     
-    ll.insert_values(["New", "Also New", "Also New Again"])
-    print(ll.get_length())
+    ll.insert_values(["New", "Also New", "Insert after this", "Also New Again", "More Entries"])
+    ll.insert_at_index(3, "Also New")
+    ll.remove_by_value("More Entries")
+    ll.insert_after_value("Insert after this", "Okay I Will")
     ll.list_print()
     
-    ll.list_print()
-    ll.insert_at_index(3, "Test")
-    ll.list_print()
