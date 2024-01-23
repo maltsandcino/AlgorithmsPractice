@@ -85,14 +85,22 @@ class LinkedList:
     def remove_by_value(self, data):
 
         current_node = self.head
-        
-        count = 0
+
+        if current_node.data == data:
+            self.head = current_node.next
+            return
+
         while current_node:
-            if current_node.data == data:
-                self.remove_at_index(count)
-                break
-            count += 1
+            temp_node = current_node
             current_node = current_node.next
+         
+            if current_node.data == data:
+                temp_next = current_node.next
+                current_node = temp_node
+                current_node.next = temp_next
+                break
+            
+            
 
     def insert_at_index(self, index, data):
         ##Handle errors and case of entry at 0th index, i.e. beginning of list
@@ -125,7 +133,8 @@ if __name__ == '__main__':
     
     ll.insert_values(["New", "Also New", "Insert after this", "Also New Again", "More Entries"])
     ll.insert_at_index(3, "Also New")
-    ll.remove_by_value("More Entries")
-    ll.insert_after_value("Insert after this", "Okay I Will")
+    ll.list_print()
+    ll.remove_by_value("Also New")
+
     ll.list_print()
     
