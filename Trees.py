@@ -15,6 +15,7 @@ class TreeNode:
             count += 1
             p = p.parent
         return count
+       
     
     def print_tree(self):
         spaces = "  " * self.get_level() * 3
@@ -55,4 +56,5 @@ if __name__ == '__main__':
     root = build_product_tree()
     root.print_tree()
     print(root.children[0].get_level())
+    p
     pass
