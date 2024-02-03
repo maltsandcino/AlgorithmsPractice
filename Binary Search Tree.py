@@ -218,8 +218,10 @@ if __name__ == '__main__':
     print(is_balanced(bbst))
     print(is_balanced(bbst2))
     print(is_balanced(bbst3))
+    ###In order traverse throuhg all elements then just call make balanced bst on these to balance unbalanced tree.
     print(bbst.in_order_traversal())
     bbst3 = make_balanced_bst(bbst3.in_order_traversal())
     print(is_balanced(bbst3))
+    print(bbst3.is_BST())
 
     
