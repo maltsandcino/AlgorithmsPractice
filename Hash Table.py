@@ -46,7 +46,9 @@ class HashTable:
 ##Delete method    
     def __delitem__(self, key):
         h = self.get_hash(key)
-        self.arr[h] = None
+        for index, kv in enumerate(self.arr[h]):
+            if kv[0] == key:
+                del self.arr[h][index]
 
 t = HashTable()
 
@@ -64,4 +66,5 @@ print(t['march 15'])
 print(t['march 16'])
 print(t['march 06'])
 print(t.arr)
-
+del t['march 06']
+print(t.arr)
