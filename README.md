@@ -22,3 +22,9 @@ Some exercises with dynamic arrays (i.e. lists in Python)
 ## Hash Table
 
 I implement a Hash Table class (that mimics the functionality of a Dict which is a built-in Hash Table structure in Python) with a very simple hash function. Collisions are handled by chaining, not linear probing.
+
+## Queues and Stacks
+
+I implement stacks and queues using deques (and lists) as well as a few methods that allow me to perform some simple operations
+
+## Graphs
