@@ -83,6 +83,7 @@ if __name__ == "__main__":
 
 route_graph = Graph(routes)
 
+print(route_graph.edges)
 start = "Mumbai"
 end = "New York"
 print(f"Paths between {start} and {end}: ", route_graph.get_shortest_path(start, end))
