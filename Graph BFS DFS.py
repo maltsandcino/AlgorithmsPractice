@@ -148,6 +148,30 @@ def connected_components_count(graph):
             component_count += 1
     
     return component_count
+
+
+### --- find largest component
+
+def largest_component(graph):
+    visited = set()
+    component_set = set()
+
+    def node_traversal(graph, current, component_set):
+        if current in component_set: 
+            return False
+        component_set.add(current)
+        for neighbour in graph[current]:
+            node_traversal(graph, neighbour, component_set)
+        return True
+
+    for node in graph.keys():
+        if node not in visited:
+            if node_traversal(graph, node, component_set) == True:
+                if len(component_set) > len(visited):
+                    visited = component_set.copy()
+                component_set.clear()
+    
+    return len(visited)
         
     
 
@@ -156,4 +180,56 @@ new_graph = new_graph.graph_dict
 print(connected_components_count(gdict))
 
 # pp.pprint(new_graph.graph_dict)
+
+
+bcgraph = [['0', '8'],
+           ['0', '1'],
+           ['0', '5'],
+           ['5', '8'],
+           ['2', '3'],
+           ['2', '4'],
+           ['3', '4']]
+
+latest_graph = Graph(bcgraph)
+latest_graph = latest_graph.graph_dict
+# pp.pprint(latest_graph)
+
+# print(largest_component(new_graph))
+
+###Shortest Path Algorithm
+
+spath_edges = [['w', 'x'],
+               ['x', 'y'],
+               ['z', 'y'],
+               ['z', 'v'],
+               ['w', 'v'],
+               ['a', 'a']]
+
+spath_graph = Graph(spath_edges)
+spath_graph = spath_graph.graph_dict
+pp.pprint(spath_graph)
+
+# We want to return the shortest path length, i.e. number of edges
+# More efficient to do a breadth first traversal in this scenario
+
+def shortest_path(graph, start, end):
+    q = deque([(start, 0)])
+    visited = set()
+
+    while q:
+        c, steps = q.popleft()
+        visited.add(c)
+        
+        if c == end: 
+            return steps
+        
+        for neighbour in graph[c]:
+            if neighbour not in visited:
+                q.append((neighbour, steps + 1))
+
+    return -1
+
+print(shortest_path(spath_graph, 'w', 'a'))
+
+
 

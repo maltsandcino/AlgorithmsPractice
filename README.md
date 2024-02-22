@@ -28,3 +28,5 @@ I implement a Hash Table class (that mimics the functionality of a Dict which is
 I implement stacks and queues using deques (and lists) as well as a few methods that allow me to perform some simple operations
 
 ## Graphs
+
+Working on various graph traversals and looking at DFS BFS iteration and recursion, using these to do things such as create and examine graphs for things like number of components, etc.
